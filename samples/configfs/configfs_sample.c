@@ -52,14 +52,12 @@ struct childless {
 	int storeme;
 };
 
-static inline struct childless *to_childless(struct config_item *item)
-{
+static inline struct childless *to_childless(struct config_item *item) {
 	return item ? container_of(to_configfs_subsystem(to_config_group(item)),
 			struct childless, subsys) : NULL;
 }
 
-static ssize_t childless_showme_show(struct config_item *item, char *page)
-{
+static ssize_t childless_showme_show(struct config_item *item, char *page) {
 	struct childless *childless = to_childless(item);
 	ssize_t pos;
 
@@ -69,8 +67,7 @@ static ssize_t childless_showme_show(struct config_item *item, char *page)
 	return pos;
 }
 
-static ssize_t childless_storeme_show(struct config_item *item, char *page)
-{
+static ssize_t childless_storeme_show(struct config_item *item, char *page) {
 	return sprintf(page, "%d\n", to_childless(item)->storeme);
 }
 
@@ -93,8 +90,7 @@ static ssize_t childless_storeme_store(struct config_item *item,
 	return count;
 }
 
-static ssize_t childless_description_show(struct config_item *item, char *page)
-{
+static ssize_t childless_description_show(struct config_item *item, char *page) {
 	return sprintf(page,
 "[01-childless]\n"
 "\n"
